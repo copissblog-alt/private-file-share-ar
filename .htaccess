@@ -1,0 +1,9 @@
+# للاستضافة المشتركة (Apache أو LiteSpeed) إن رفعت المجلد كاملاً داخل public_html:
+# كل الطلبات تذهب إلى مجلد public، وبقية المجلدات وملف الإعداد ممنوعة.
+Options -Indexes
+RewriteEngine On
+RewriteRule ^(src|views|data|tests)(/|$) - [F,L]
+RewriteRule ^(config|config\.sample)\.php$ - [F,L]
+RewriteRule ^(README\.md|LICENSE|nginx\.conf\.example)$ - [F,L]
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
