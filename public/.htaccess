@@ -1,0 +1,5 @@
+# Apache / الاستضافة المشتركة: كل الطلبات إلى index.php ما عدا الملفات الموجودة
+Options -Indexes
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L,QSA]
